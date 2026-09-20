@@ -1,4 +1,4 @@
-# Mini Metro AI Planner
+# Mini Metro Flow Planner
 
 An unofficial, research-oriented autopilot for **Mini Metro** that combines native Unity game state, deterministic route search, passenger-flow optimization, resource allocation, and an optional TensorFlow/PyTorch computer-vision safety sidecar.
 

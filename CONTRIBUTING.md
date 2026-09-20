@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for helping improve Mini Metro AI Planner.
+Thank you for helping improve Mini Metro Flow Planner.
 
 ## Ground rules
 
@@ -29,4 +29,3 @@ Thank you for helping improve Mini Metro AI Planner.
 ## Pull requests
 
 Keep changes small enough to review. Include the motivation, affected decision path, verification performed, and any safety/fallback implications. Model changes must report held-out metrics and must not lower promotion gates merely to make a run pass.
-

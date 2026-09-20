@@ -1,0 +1,38 @@
+name: Source validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python-and-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: research/vision/requirements-dev.txt
+
+      - name: Install test dependencies
+        run: python -m pip install -r research/vision/requirements-dev.txt
+
+      - name: Test log analyzer
+        run: python -m unittest -v tools/test_analyze_player_log.py
+
+      - name: Test vision core
+        working-directory: research/vision
+        run: python -m unittest discover -s tests -v
+
+      - name: Validate generated notebooks
+        working-directory: research/vision
+        run: python colab/validate_notebooks.py
+

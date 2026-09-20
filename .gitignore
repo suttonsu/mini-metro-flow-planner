@@ -1,0 +1,48 @@
+# Game binaries and locally patched outputs (never redistribute)
+backup/
+dist/
+staging/
+*.dll
+*.exe
+*.pdb
+
+# Runtime logs and local control state
+*.log
+runtime-smoke*.log
+vision-control-state.txt
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Generated datasets, frames, model bundles, and trained weights
+research/vision/artifacts/
+research/vision/datasets/
+research/vision/models/
+*.executed.ipynb
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.keras
+*.h5
+*.tflite
+*.zip
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+

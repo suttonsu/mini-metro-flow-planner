@@ -1,0 +1,107 @@
+{
+  "schema": "mini-metro-colab-experiments-v1",
+  "seed": 20260920,
+  "scene_classification": {
+    "metrics": ["accuracy", "macro_f1", "balanced_accuracy", "expected_calibration_error"],
+    "tensorflow": [
+      {
+        "id": "tf-scene-mobilenetv3-small-192",
+        "backbone": "MobileNetV3Small",
+        "pretrained_weights": "imagenet",
+        "image_size": 192,
+        "batch_size": 32,
+        "head_epochs": 8,
+        "fine_tune_epochs": 12,
+        "head_learning_rate": 0.001,
+        "fine_tune_learning_rate": 0.00003,
+        "dropout": 0.25
+      },
+      {
+        "id": "tf-scene-efficientnetv2-b0-224",
+        "backbone": "EfficientNetV2B0",
+        "pretrained_weights": "imagenet",
+        "image_size": 224,
+        "batch_size": 24,
+        "head_epochs": 10,
+        "fine_tune_epochs": 15,
+        "head_learning_rate": 0.0007,
+        "fine_tune_learning_rate": 0.00002,
+        "dropout": 0.3
+      }
+    ],
+    "pytorch": [
+      {
+        "id": "torch-scene-mobilenetv3-small-192",
+        "backbone": "mobilenet_v3_small",
+        "pretrained_weights": "IMAGENET1K_V1",
+        "image_size": 192,
+        "batch_size": 32,
+        "head_epochs": 8,
+        "fine_tune_epochs": 12,
+        "head_learning_rate": 0.001,
+        "fine_tune_learning_rate": 0.00003,
+        "dropout": 0.25
+      },
+      {
+        "id": "torch-scene-efficientnet-b0-224",
+        "backbone": "efficientnet_b0",
+        "pretrained_weights": "IMAGENET1K_V1",
+        "image_size": 224,
+        "batch_size": 24,
+        "head_epochs": 10,
+        "fine_tune_epochs": 15,
+        "head_learning_rate": 0.0007,
+        "fine_tune_learning_rate": 0.00002,
+        "dropout": 0.3
+      }
+    ]
+  },
+  "station_detection": {
+    "task": "binary_station_detection",
+    "metrics": ["precision_iou50", "recall_iou50", "f1_iou50", "count_mae"],
+    "tensorflow": [
+      {
+        "id": "tf-detect-yolov8-xs-coco-640",
+        "model": "YOLOV8Detector",
+        "backbone_preset": "yolo_v8_xs_backbone_coco",
+        "pretrained_weights": "COCO backbone",
+        "image_size": 640,
+        "batch_size": 4,
+        "epochs": 30,
+        "learning_rate": 0.0002,
+        "fpn_depth": 1
+      },
+      {
+        "id": "tf-detect-yolov8-s-coco-640",
+        "model": "YOLOV8Detector",
+        "backbone_preset": "yolo_v8_s_backbone_coco",
+        "pretrained_weights": "COCO backbone",
+        "image_size": 640,
+        "batch_size": 2,
+        "epochs": 40,
+        "learning_rate": 0.0001,
+        "fpn_depth": 2
+      }
+    ],
+    "pytorch": [
+      {
+        "id": "torch-detect-fasterrcnn-mbv3-320-coco",
+        "model": "fasterrcnn_mobilenet_v3_large_320_fpn",
+        "pretrained_weights": "COCO_V1",
+        "max_image_size": 960,
+        "batch_size": 2,
+        "epochs": 20,
+        "learning_rate": 0.003
+      },
+      {
+        "id": "torch-detect-fasterrcnn-mbv3-fpn-coco",
+        "model": "fasterrcnn_mobilenet_v3_large_fpn",
+        "pretrained_weights": "COCO_V1",
+        "max_image_size": 1280,
+        "batch_size": 1,
+        "epochs": 25,
+        "learning_rate": 0.002
+      }
+    ]
+  }
+}
